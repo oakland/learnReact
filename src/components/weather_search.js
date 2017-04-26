@@ -11,21 +11,18 @@ class WeatherSearch extends Component {
 		return (
 			<div className="form-inline">
 				<input 
-				type="text" 
 				className="form-control" 
-				onBlur={
-					e => {
-						const value = e.target.value;
-						// console.log(value);
-						this.setState({city: value});
-					}
-				}
+				onChange={e => this.onInputChange(e.target.value)}
 				/>
-
-				<button className="btn btn-success" onClick={e => this.props.searchweather(this.state.city)}>Search</button>
 			</div>
 		);
+	}
+
+	onInputChange(term) {
+		this.setState({term});
+		this.props.searchweather(term);
 	}
 };
 
 export default WeatherSearch;
+// <button className="btn btn-success" onClick={e => this.props.searchweather(this.state.city)}>Search</button>
