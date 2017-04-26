@@ -9,8 +9,9 @@ class WeatherSearch extends Component {
 	}
 	render() {
 		return (
-			<div>
-				<input type="text" placeholder={this.state.value} /><button>Search</button>
+			<div className="form-inline">
+				<input type="text" placeholder={this.state.value} className="form-control" />
+				<button className="btn btn-success">Search</button>
 			</div>
 		);
 	}

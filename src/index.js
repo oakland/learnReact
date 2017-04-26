@@ -10,20 +10,19 @@ const APPID = "5e291601749826c80cf9a382c7de31e3";
 class App extends Component{
 	constructor(props) {
 		super(props);
-		// const weathers = this.weathersearch();
 		this.state = {
 			weathers: null
 		};
-		this.weathersearch();
+		this.weathersearch("beijing");
 	}
-	weathersearch() {
+	weathersearch(city) {
 		Weather.setLang('zh');
-		Weather.setCity('Beijing');
+		Weather.setCity(city);
 		Weather.setUnits('metric');
 		Weather.setAPPID(APPID);
 		Weather.getWeatherForecastForDays(3, (err, obj) => {
-	        this.setState({weathers: obj.list});
-	        console.log(obj);
+	        this.setState({weathers: obj});
+	        // console.log(obj);  
 	    });
 	}
 	render() {
