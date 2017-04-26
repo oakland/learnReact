@@ -5,7 +5,7 @@ const SearchResult = ({weathers}) => {
 	if(!weathers) {
 		return <div>Loading...</div>;
 	};
-	const items = weathers.list.map(weather => {
+	const items = weathers.map(weather => {
 		return (
 			<ResultItem key={weather.dt} weather={weather} />
 		)

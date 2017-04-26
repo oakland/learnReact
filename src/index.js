@@ -11,7 +11,7 @@ class App extends Component{
 	constructor(props) {
 		super(props);
 		this.state = {
-			weathers: null
+			weathers: []
 		};
 		this.weathersearch("beijing");
 	}
@@ -21,15 +21,17 @@ class App extends Component{
 		Weather.setUnits('metric');
 		Weather.setAPPID(APPID);
 		Weather.getWeatherForecastForDays(3, (err, obj) => {
+	        console.log(this);
 	        this.setState({weathers: obj});
-	        // console.log(obj);  
+	        // console.log(obj);
 	    });
 	}
 	render() {
+		const weathersearch = this.weathersearch;
 		return (
 			<div>
-				<WeatherSearch />
-				<SearchResult weathers={this.state.weathers} />
+				<WeatherSearch searchweather={weathersearch}/>
+				<SearchResult weathers={this.state.weathers.list} />
 			</div>
 		);
 	}

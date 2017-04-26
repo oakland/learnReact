@@ -4,14 +4,25 @@ class WeatherSearch extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			value: "initial value"
+			city: ""
 		}
 	}
 	render() {
 		return (
 			<div className="form-inline">
-				<input type="text" placeholder={this.state.value} className="form-control" />
-				<button className="btn btn-success">Search</button>
+				<input 
+				type="text" 
+				className="form-control" 
+				onBlur={
+					e => {
+						const value = e.target.value;
+						// console.log(value);
+						this.setState({city: value});
+					}
+				}
+				/>
+
+				<button className="btn btn-success" onClick={e => this.props.searchweather(this.state.city)}>Search</button>
 			</div>
 		);
 	}
