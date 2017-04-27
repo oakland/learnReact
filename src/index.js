@@ -1,3 +1,4 @@
+// 总结一下之前 webpack, babel 这些
 // 可以记录一下 400 错误，就是 bad request 错误。写一篇博客或者 issue
 // 写一些解决 bind(this) 的方法，写一个 issue。
 // 服务器有问题的时候如何实现给用户的友好提示？有时候调用 openweatherapis 的时候，服务器会提示 503
