@@ -2,11 +2,8 @@ import React, {Component} from "react";
 import ReactDom from "react-dom";
 import WeatherSearch from "./components/weather_search";
 import SearchResult from "./components/search_result";
-import Weather from "openweather-apis";
-import _ from "lodash";
+import OpenWeather from "openweather-apis";
 const APPID = "5e291601749826c80cf9a382c7de31e3";
-
-// json path: .list["0"].temp.max, .day
 
 class App extends Component{
 	constructor(props) {
@@ -17,22 +14,19 @@ class App extends Component{
 		this.weathersearch("beijing");
 	}
 	weathersearch(city) {
-		Weather.setLang('zh');
-		Weather.setCity(city);
-		Weather.setUnits('metric');
-		Weather.setAPPID(APPID);
-		Weather.getWeatherForecastForDays(3, (err, obj) => {
+		OpenWeather.setLang('zh');
+		OpenWeather.setCity(city);
+		OpenWeather.setUnits('metric');
+		OpenWeather.setAPPID(APPID);
+		OpenWeather.getWeatherForecastForDays(3, (err, weathers) => {
 	        // console.log(this);
-	        this.setState({weathers: obj});
-	        // __scope__.Global[1].$r.setState({weathers: obj});
-	        // console.log(obj);
+	        this.setState({weathers});
 	    });
 	}
 	render() {
-		const weathersearch = _.debounce((city) => {this.weathersearch(city)}, 500);
 		return (
 			<div>
-				<WeatherSearch searchweather={weathersearch}/>
+				<WeatherSearch weathersearch={this.weathersearch}/>
 				<SearchResult weathers={this.state.weathers.list} />
 			</div>
 		);

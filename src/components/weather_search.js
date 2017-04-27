@@ -18,11 +18,10 @@ class WeatherSearch extends Component {
 		);
 	}
 
-	onInputChange(term) {
-		this.setState({term});
-		this.props.searchweather(term);
+	onInputChange(city) {
+		this.setState({city});
+		this.props.weathersearch(city);
 	}
 };
 
 export default WeatherSearch;
-// <button className="btn btn-success" onClick={e => this.props.searchweather(this.state.city)}>Search</button>
