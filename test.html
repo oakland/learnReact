@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test</title>
+</head>
+<body>
+	<ul class="list">
+		<li>tab1</li>
+		<li>tab2</li>
+		<li>tab3</li>
+	</ul>
+	<div class="container"></div>
+	<script>
+		const list = document.querySelector(".list");
+		const lis = list.querySelectorAll("li");
+		const container = document.querySelector(".container");
+		container.innerHTML = lis[0].innerHTML;
+		lis.forEach((li) => {
+			li.addEventListener('click', (e) => {
+				container.innerHTML = e.target.innerHTML;
+			}, false)
+		});
+	</script>
+</body>
+</html>
